@@ -1,0 +1,75 @@
+# Banking Management System
+
+# Class Definition Bank
+class Bank:
+    bankname = "Bangladesh Express Bank"
+    branch = "ABC, Dhaka, Bangladesh"
+
+    def __init__(self, username, pan, address):
+        self.username = username
+        self.pan = pan
+        self.address = address
+        self.balance = 0.00
+        print(f'Hello {self.username}, congratulations! Your account has been created successfully.')
+        
+    # Method For Depositing Funds
+    def deposit(self, amount):
+        self.balance += amount
+        print(f'{amount} deposited successfully.')
+
+    # Method For Withdrawing Funds
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print(f'{amount} withdrawn successfully.')
+        else:
+            print("Insufficient Funds...")
+
+    # Method For Generating Mini-Statement
+    def ministatement(self):
+        print(f'Your account balance is {self.balance}')
+
+    # Main Execution Logic
+    
+    
+    # Welcome Message
+    print(f'Welcome to {Bank.bankname}, {Bank.branch}')
+
+    # Collect user data for account creation
+    username = input("Enter your name: ")
+    pan = input("Enter PAN card number: ")
+    address = input("Enter your address: ")
+    
+    # Object creation based on user provided data
+    b = Bank(username, pan, address) 
+    
+    # Main Menu Loop
+    
+ while True:
+    # Display Menu Options
+    print("Please select an option:")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Mini-statement")
+    print("4. Stop")
+    
+    # Get User Choice
+    option = int(input(''))
+
+    if option == 1:
+        amount = float(input("Enter deposit amount: "))
+        b.deposit(amount)
+
+    elif option == 2:
+        amount = float(input("Enter withdrawal amount: "))
+        b.withdraw(amount)
+
+    elif option == 3:
+        b.ministatement()
+
+    elif option == 4:
+        print("Thanks for using Bangladesh Express Bank...")
+        break
+
+    else:
+        print("Invalid Option. Please select a valid option...")
